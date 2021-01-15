@@ -16,7 +16,7 @@ public:
   bool VisitFunctionDecl(FunctionDecl *F) {
     if (F->isInlineSpecified() && F->hasBody() &&
         !F->hasAttr<AlwaysInlineAttr>()) {
-      FullSourceLoc FL = Instance.getASTContext().getFullLoc(F->getBeginLoc());
+      FullSourceLoc FL = Instance.getASTContext().getFullLoc(F->getLocStart());
       DiagnosticsEngine &D = Instance.getDiagnostics();
       unsigned DiagID =
           D.getCustomDiagID(DiagnosticsEngine::Error,
